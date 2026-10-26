@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Crockies — Délices Cookies"
+description = "Boutique web accessible et respectueuse de la vie privée pour commander des cookies et des coffrets cadeaux artisanaux en Suisse."
+version = "1.0.0"
+id = "artifacts/crockies-shop"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 21765
+
+[services.development]
+run = "pnpm --filter @workspace/crockies-shop run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/crockies-shop", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/crockies-shop/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "21765"
+BASE_PATH = "/"
