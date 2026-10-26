@@ -10,27 +10,27 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          
+
       - name: Setup pnpm
         uses: pnpm/action-setup@v2
         with:
           version: 8
-          
+
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
-        
+
       - name: Build
         run: BASE_PATH="/${{ github.event.repository.name }}" pnpm run build
-        
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
           path: artifacts/crockies-shop/dist/public
-          
+
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v2
