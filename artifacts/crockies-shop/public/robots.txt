@@ -1,3 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://crockies.ch/sitemap.xml
