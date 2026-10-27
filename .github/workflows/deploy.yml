@@ -32,7 +32,7 @@ jobs:
       - name: Typecheck
         run: pnpm --filter @workspace/crockies-shop run typecheck
 
-- name: Build
+      - name: Build
         run: |
           BASE_PATH="${{ github.event.repository.name }}"
           pnpm --filter @workspace/crockies-shop run build
