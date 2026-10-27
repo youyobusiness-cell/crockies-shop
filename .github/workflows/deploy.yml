@@ -29,8 +29,13 @@ jobs:
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
 
-      - name: Build
-        run: BASE_PATH="/${{ github.event.repository.name }}" pnpm run build
+      - name: Typecheck
+        run: pnpm --filter @workspace/crockies-shop run typecheck
+
+- name: Build
+        run: |
+          BASE_PATH="${{ github.event.repository.name }}"
+          pnpm --filter @workspace/crockies-shop run build
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
