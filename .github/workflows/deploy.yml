@@ -27,7 +27,7 @@ jobs:
           version: 8
 
       - name: Install dependencies
-        run: pnpm install --no-frozen-lockfile --config.minimumReleaseAge=0
+        run: pnpm config set minimumReleaseAge 0 && pnpm install --no-frozen-lockfile
 
       - name: Typecheck
         run: pnpm --filter @workspace/crockies-shop run typecheck
